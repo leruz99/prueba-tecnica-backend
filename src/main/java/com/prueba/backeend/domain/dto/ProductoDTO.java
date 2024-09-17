@@ -5,6 +5,6 @@ public record ProductoDTO(
         String nombre,
         String caracteristicas,
         Double precio,
-        String empresaNit
+        Long empresaNit
 ) {
 }

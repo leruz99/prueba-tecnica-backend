@@ -36,8 +36,11 @@ public class WebSecurityConfig {
                                 "/users/**",
                                 "/v3/api-docs/**")
                         .permitAll()
-                        .requestMatchers("/api/users/**")
-                        .authenticated())
+                        .requestMatchers(
+                                "/api/users/**",
+                                "/productos/**",
+                                "/inventario/**",
+                                "/empresas/**").authenticated())
                 .sessionManagement(h -> h.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .headers(headers -> headers.permissionsPolicy(policy -> policy.policy("frame-src 'self'")))
                 .apply(jwtConfigurer);

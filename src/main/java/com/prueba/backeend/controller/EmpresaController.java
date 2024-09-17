@@ -23,7 +23,7 @@ public class EmpresaController {
     }
 
     @PutMapping("/{nit}")
-    public ResponseEntity<EmpresaDTO> actualizarEmpresa(@PathVariable String nit, @RequestBody EmpresaDTO empresaDTO) {
+    public ResponseEntity<EmpresaDTO> actualizarEmpresa(@PathVariable Long nit, @RequestBody EmpresaDTO empresaDTO) {
         EmpresaDTO empresaActualizada = empresaService.actualizarEmpresa(nit, empresaDTO);
         return ResponseEntity.ok(empresaActualizada);
     }

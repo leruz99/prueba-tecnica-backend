@@ -14,8 +14,12 @@ import java.util.stream.Collectors;
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
-    @Autowired
-    private ClienteRepository clienteRepository;
+
+    private final ClienteRepository clienteRepository;
+
+    public ClienteServiceImpl(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
+    }
 
     @Override
     public ClienteDTO registrarCliente(ClienteDTO clienteDTO) {

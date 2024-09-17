@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface EmpresaService {
     EmpresaDTO registrarEmpresa(EmpresaDTO empresaDTO);
-    EmpresaDTO actualizarEmpresa(String nit, EmpresaDTO empresaDTO);
+    EmpresaDTO actualizarEmpresa(Long nit, EmpresaDTO empresaDTO);
     void eliminarEmpresa(String nit);
     List<EmpresaDTO> listarEmpresas();
 }

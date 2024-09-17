@@ -14,8 +14,12 @@ import java.util.stream.Collectors;
 @Service
 public class EmpresaServiceImpl implements EmpresaService {
 
-    @Autowired
-    private EmpresaRepository empresaRepository;
+
+    private final EmpresaRepository empresaRepository;
+
+    public EmpresaServiceImpl(EmpresaRepository empresaRepository) {
+        this.empresaRepository = empresaRepository;
+    }
 
     @Override
     public EmpresaDTO registrarEmpresa(EmpresaDTO empresaDTO) {
@@ -25,7 +29,7 @@ public class EmpresaServiceImpl implements EmpresaService {
     }
 
     @Override
-    public EmpresaDTO actualizarEmpresa(String nit, EmpresaDTO empresaDTO) {
+    public EmpresaDTO actualizarEmpresa(Long nit, EmpresaDTO empresaDTO) {
         Empresa empresa = EmpresaMapper.toEmpresa(empresaDTO);
         empresa.setNit(nit);
         Empresa updatedEmpresa = empresaRepository.save(empresa);

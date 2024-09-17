@@ -14,6 +14,7 @@ import org.springframework.web.client.HttpServerErrorException;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(value = {EmailAlreadyExistsException.class})
@@ -109,4 +110,5 @@ public class GlobalExceptionHandler {
         response.setMessage(ex.getMessage());
         return response;
     }
+
 }

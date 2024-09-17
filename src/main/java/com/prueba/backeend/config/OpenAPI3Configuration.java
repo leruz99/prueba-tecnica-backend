@@ -18,6 +18,7 @@ import java.util.List;
 public class OpenAPI3Configuration {
     @Value("${swagger.api-url}")
     String apiUrl;
+
     @Bean
     OpenAPI openApi() {
         return new OpenAPI()
@@ -29,8 +30,8 @@ public class OpenAPI3Configuration {
                                         .scheme("bearer")
                                         .bearerFormat("JWT")))
                 .info(new Info()
-                        .title("Prueba-tecnica")
-                        .description("Prueba tecnica backend")
+                        .title("Prueba Tecnica")
+                        .description("Prueba-tecnica")
                         .version("v1.0.0")
                         .contact(new Contact().name("Luis Ruz").email("lruzmenco@gmail.com")))
                 .addSecurityItem(new SecurityRequirement().addList("JWT", Arrays.asList("read", "write")))

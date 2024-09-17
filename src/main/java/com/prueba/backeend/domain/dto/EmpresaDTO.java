@@ -1,7 +1,7 @@
 package com.prueba.backeend.domain.dto;
 
 public record EmpresaDTO(
-        String nit,
+        Long nit,
         String nombre,
         String direccion,
         String telefono

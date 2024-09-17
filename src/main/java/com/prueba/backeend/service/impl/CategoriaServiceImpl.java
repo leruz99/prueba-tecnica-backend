@@ -14,8 +14,11 @@ import java.util.stream.Collectors;
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
 
-    @Autowired
-    private CategoriaRepository categoriaRepository;
+    private final CategoriaRepository categoriaRepository;
+
+    public CategoriaServiceImpl(CategoriaRepository categoriaRepository) {
+        this.categoriaRepository = categoriaRepository;
+    }
 
     @Override
     public CategoriaDTO registrarCategoria(CategoriaDTO categoriaDTO) {

@@ -16,16 +16,19 @@ import java.util.stream.Collectors;
 @Service
 public class ProductoServiceImpl implements ProductoService {
 
-    @Autowired
-    private ProductoRepository productoRepository;
+    private final ProductoRepository productoRepository;
 
-    @Autowired
-    private EmpresaRepository empresaRepository;
+    private final EmpresaRepository empresaRepository;
+
+    public ProductoServiceImpl(ProductoRepository productoRepository, EmpresaRepository empresaRepository) {
+        this.productoRepository = productoRepository;
+        this.empresaRepository = empresaRepository;
+    }
 
     @Override
     public ProductoDTO registrarProducto(ProductoDTO productoDTO) {
         Producto producto = ProductoMapper.toProducto(productoDTO);
-        Empresa empresa = empresaRepository.findById(productoDTO.empresaNit())
+        Empresa empresa = empresaRepository.findByNit(productoDTO.empresaNit())
                 .orElseThrow(() -> new RuntimeException("Empresa no encontrada"));
         producto.setEmpresa(empresa);
         Producto savedProducto = productoRepository.save(producto);
@@ -36,7 +39,7 @@ public class ProductoServiceImpl implements ProductoService {
     public ProductoDTO actualizarProducto(Long codigo, ProductoDTO productoDTO) {
         Producto producto = ProductoMapper.toProducto(productoDTO);
         producto.setCodigo(codigo);
-        Empresa empresa = empresaRepository.findById(productoDTO.empresaNit())
+        Empresa empresa = empresaRepository.findByNit(productoDTO.empresaNit())
                 .orElseThrow(() -> new RuntimeException("Empresa no encontrada"));
         producto.setEmpresa(empresa);
         Producto updatedProducto = productoRepository.save(producto);

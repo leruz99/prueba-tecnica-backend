@@ -19,14 +19,18 @@ import java.util.stream.Collectors;
 @Service
 public class OrdenServiceImpl implements OrdenService {
 
-    @Autowired
-    private OrdenRepository ordenRepository;
 
-    @Autowired
-    private ClienteRepository clienteRepository;
+    private final OrdenRepository ordenRepository;
 
-    @Autowired
-    private ProductoRepository productoRepository;
+    private final ClienteRepository clienteRepository;
+
+    private final ProductoRepository productoRepository;
+
+    public OrdenServiceImpl(OrdenRepository ordenRepository, ClienteRepository clienteRepository, ProductoRepository productoRepository) {
+        this.ordenRepository = ordenRepository;
+        this.clienteRepository = clienteRepository;
+        this.productoRepository = productoRepository;
+    }
 
     @Override
     public OrdenDTO registrarOrden(OrdenDTO ordenDTO) {
